@@ -55,9 +55,3 @@ abc
 ``` javascript
 zaxCookie.del('token')
 ```
-
-
-
-## More
-- [Docs](https://github.com/Ipxxiao/zax-cookie/tree/master/docs)
-- [Test](https://github.com/Ipxxiao/zax-cookie/blob/master/__tests__/index.spec.ts)
