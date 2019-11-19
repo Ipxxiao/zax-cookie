@@ -169,14 +169,46 @@ const del = (key: string) => {
     get(key) && set(key, '', -1)
 }
 
+/**
+ * clear all cookie
+ *
+ * @example
+ * ```js
+ * clear()
+ * ```
+ */
+const clear = () => {
+    if (typeof document === 'undefined') {
+        return
+    }
+
+    // To prevent the for loop in the first place assign an empty array
+    // in case there are no cookies at all.
+    let cookies: string[] = document.cookie ? document.cookie.split('; ') : []
+
+    for (let i = 0; i < cookies.length; i++) {
+        let parts: string[] = cookies[i].split('=')
+
+        try {
+            let key: string = decode(parts[0])
+
+            del(key)
+        } catch (e) { }
+    }
+}
+
 export {
+    getDomain,
     set,
     get,
     del,
+    clear,
 }
 
 export default {
+    getDomain,
     set,
     get,
     del,
+    clear,
 }
