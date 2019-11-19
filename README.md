@@ -28,18 +28,35 @@ npm run build
 ## use
 
 ``` javascript
-import { set, get, del } from 'zax-cookie'
+import { getDomain, set, get, del, clear } from 'zax-cookie'
 import zaxCookie from 'zax-cookie'
 ```
 
 
+. **getDomain**
+``` javascript
+zaxCookie.getDomain()
+```
+
+``` javascript
+localhost
+```
+
 . **set**
 ``` javascript
 zaxCookie.set('token', 'abc')
+zaxCookie.set('token', 'abc', 1)
+zaxCookie.set('token', 'abc', {
+    path: '/',
+    domain: 'zhongan.com'
+    expires: new Date(Date.now() + 1 * 864e5).toUTCString()
+})
 ```
 
 ``` javascript
 token=abc; path=/; domain=localhost
+token=abc; path=/; domain=localhost; expires=Wed, 20 Nov 2019 09:18:38 GMT
+token=abc; path=/; domain=zhongan.com; expires=Wed, 20 Nov 2019 09:18:38 GMT
 ```
 
 . **get**
@@ -54,6 +71,15 @@ abc
 . **del**
 ``` javascript
 zaxCookie.del('token')
+zaxCookie.del('token', {
+    path: '/',
+    domain: 'zhongan.com'
+})
+```
+
+. **clear**
+``` javascript
+zaxCookie.clear()
 ```
 
 ## More
