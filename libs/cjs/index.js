@@ -4,7 +4,11 @@
  * @module zaxCookie
  * @see doc https://github.com/Ipxxiao/zax-cookie/tree/master/docs
  */
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+var js_cookie_1 = __importDefault(require("js-cookie"));
 var decode = function (s) {
     return s.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent);
 };
@@ -20,23 +24,27 @@ var decode = function (s) {
  * @returns {String} domain
  */
 var getDomain = function () {
-    var hostname = location.hostname;
-    // domain.com
-    if (hostname.split('.').length == 1) {
-        // 一级域名，直接访问
-        return hostname;
+    /* istanbul ignore next */
+    if (typeof location !== 'undefined') {
+        var hostname = location.hostname;
+        // domain.com
+        if (hostname.split('.').length == 1) {
+            // 一级域名，直接访问
+            return hostname;
+        }
+        // 192.168.32.251
+        var lastDot = hostname.lastIndexOf('.');
+        var block = hostname.slice(lastDot + 1);
+        if (!isNaN(Number(block))) {
+            // 数字，则为IP地址
+            return hostname;
+        }
+        // a.b.c.domain.com
+        var lastDomainDot = hostname.lastIndexOf('.', lastDot - 1);
+        return hostname.slice(lastDomainDot + 1);
     }
-    // 192.168.32.251
-    var lastDot = hostname.lastIndexOf('.');
-    var block = hostname.slice(lastDot + 1);
-    if (!isNaN(Number(block))) {
-        // 数字，则为IP地址
-        return hostname;
-    }
-    // a.b.c.domain.com
-    var lastDomainDot = hostname.lastIndexOf('.', lastDot - 1);
-    return hostname.slice(lastDomainDot + 1);
 };
+exports.getDomain = getDomain;
 /**
  * set cookie
  *
@@ -48,43 +56,29 @@ var getDomain = function () {
  *
  * @param key {String} set cookie key
  * @param value {String} set cookie value
- * @param day {Number} set cookie expires days
+ * @param day {Number | Object}
+ *
  * @returns {String}
  */
-var set = function (key, value, day) {
-    if (typeof document === 'undefined') {
-        return '';
-    }
-    var attributes = {
-        path: '/',
-        domain: getDomain()
-    };
-    if (typeof day === 'number') {
-        attributes.expires = new Date(Date.now() + day * 864e5).toUTCString();
-    }
-    value = encodeURIComponent(String(value)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
-    key = encodeURIComponent(String(key))
-        .replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
-        .replace(/[()]/g, escape);
-    var stringifiedAttributes = '';
-    for (var attributeName in attributes) {
-        if (!attributes[attributeName]) {
-            continue;
+var set = function (key, value, attributes) {
+    /* istanbul ignore next */
+    if (typeof document !== 'undefined') {
+        var options = {
+            path: '/',
+            domain: getDomain()
+        };
+        if (!attributes) {
+            return js_cookie_1.default.set(key, value, options);
         }
-        stringifiedAttributes += '; ' + attributeName;
-        if (attributes[attributeName] === true) {
-            continue;
+        else if (typeof attributes === 'number') {
+            options.expires = attributes;
+            return js_cookie_1.default.set(key, value, options);
         }
-        // Considers RFC 6265 section 5.2:
-        // ...
-        // 3.  If the remaining unparsed-attributes contains a %x3B (";")
-        //     character:
-        // Consume the characters of the unparsed-attributes up to,
-        // not including, the first %x3B (";") character.
-        // ...
-        stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
+        else if (Object.prototype.toString.call(attributes) === '[object Object]') {
+            attributes = Object.assign({}, options, attributes);
+            return js_cookie_1.default.set(key, value, attributes);
+        }
     }
-    return (document.cookie = key + '=' + value + stringifiedAttributes);
 };
 exports.set = set;
 /**
@@ -97,32 +91,14 @@ exports.set = set;
  * ```
  *
  * @param key {String} get cookie key
+ *
  * @returns {String}
  */
 var get = function (key) {
-    if (typeof document === 'undefined' || (typeof key === 'string' && !key)) {
-        return '';
+    /* istanbul ignore next */
+    if (typeof document !== 'undefined') {
+        return js_cookie_1.default.get(key);
     }
-    // To prevent the for loop in the first place assign an empty array
-    // in case there are no cookies at all.
-    var cookies = document.cookie ? document.cookie.split('; ') : [];
-    var jar = {};
-    for (var i = 0; i < cookies.length; i++) {
-        var parts = cookies[i].split('=');
-        var cookie = parts.slice(1).join('=');
-        if (cookie.charAt(0) === '"') {
-            cookie = cookie.slice(1, -1);
-        }
-        try {
-            var name_1 = decode(parts[0]);
-            jar[name_1] = decode(cookie);
-            if (key === name_1) {
-                break;
-            }
-        }
-        catch (e) { }
-    }
-    return key ? jar[key] : jar;
 };
 exports.get = get;
 /**
@@ -134,14 +110,41 @@ exports.get = get;
  * ```
  *
  * @param key {String} del cookie key
+ * @param attributes {Object}
  */
-var del = function (key) {
-    get(key) && set(key, '', -1);
+var del = function (key, attributes) {
+    js_cookie_1.default.remove(key, attributes);
 };
 exports.del = del;
+/**
+ * clear all cookie
+ *
+ * @example
+ * ```js
+ * clear()
+ * ```
+ */
+var clear = function () {
+    /* istanbul ignore next */
+    if (typeof document !== 'undefined') {
+        // To prevent the for loop in the first place assign an empty array
+        // in case there are no cookies at all.
+        var cookies = document.cookie ? document.cookie.split('; ') : [];
+        for (var i = 0; i < cookies.length; i++) {
+            var parts = cookies[i].split('=');
+            if (parts[0]) {
+                var key = decode(parts[0]);
+                del(key);
+            }
+        }
+    }
+};
+exports.clear = clear;
 exports.default = {
+    getDomain: getDomain,
     set: set,
     get: get,
     del: del,
+    clear: clear,
 };
 //# sourceMappingURL=index.js.map

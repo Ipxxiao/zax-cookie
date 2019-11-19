@@ -3,6 +3,26 @@
  * @module zaxCookie
  * @see doc https://github.com/Ipxxiao/zax-cookie/tree/master/docs
  */
+declare type DateType = number | Date | undefined;
+interface Attributes {
+    path: string;
+    domain: string | undefined;
+    expires?: DateType;
+    secure?: any;
+    'max-age'?: any;
+}
+/**
+ * get domain
+ *
+ * @example
+ * ```js
+ * getDomain()
+ * //=> localhost
+ * ```
+ *
+ * @returns {String} domain
+ */
+declare const getDomain: () => string | undefined;
 /**
  * set cookie
  *
@@ -14,10 +34,11 @@
  *
  * @param key {String} set cookie key
  * @param value {String} set cookie value
- * @param day {Number} set cookie expires days
+ * @param day {Number | Object}
+ *
  * @returns {String}
  */
-declare const set: (key: string, value: string, day?: number | undefined) => string;
+declare const set: (key: string, value: string, attributes?: number | Attributes | undefined) => string | void;
 /**
  * get cookie
  *
@@ -28,9 +49,10 @@ declare const set: (key: string, value: string, day?: number | undefined) => str
  * ```
  *
  * @param key {String} get cookie key
+ *
  * @returns {String}
  */
-declare const get: (key: string) => string;
+declare const get: (key: string) => string | void;
 /**
  * del cookie
  *
@@ -40,12 +62,24 @@ declare const get: (key: string) => string;
  * ```
  *
  * @param key {String} del cookie key
+ * @param attributes {Object}
  */
-declare const del: (key: string) => void;
-export { set, get, del, };
+declare const del: (key: string, attributes?: Attributes | undefined) => void;
+/**
+ * clear all cookie
+ *
+ * @example
+ * ```js
+ * clear()
+ * ```
+ */
+declare const clear: () => void;
+export { getDomain, set, get, del, clear, };
 declare const _default: {
-    set: (key: string, value: string, day?: number | undefined) => string;
-    get: (key: string) => string;
-    del: (key: string) => void;
+    getDomain: () => string | undefined;
+    set: (key: string, value: string, attributes?: number | Attributes | undefined) => string | void;
+    get: (key: string) => string | void;
+    del: (key: string, attributes?: Attributes | undefined) => void;
+    clear: () => void;
 };
 export default _default;

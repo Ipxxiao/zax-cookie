@@ -7,12 +7,31 @@
 
 * [zaxCookie](#module_zaxCookie)
     * _static_
+        * [.getDomain](#module_zaxCookie.getDomain) ⇒ <code>String</code>
         * [.set](#module_zaxCookie.set) ⇒ <code>String</code>
         * [.get](#module_zaxCookie.get)
+        * [.del](#module_zaxCookie.del)
     * _inner_
         * [~getDomain()](#module_zaxCookie..getDomain) ⇒ <code>String</code>
-        * [~set(key, value, day)](#module_zaxCookie..set) ⇒ <code>String</code>
 
+<a name="module_zaxCookie.getDomain"></a>
+
+### zaxCookie.getDomain ⇒ <code>String</code>
+<p>set cookie</p>
+
+**Kind**: static property of [<code>zaxCookie</code>](#module_zaxCookie)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>String</code> | <p>set cookie key</p> |
+| value | <code>String</code> | <p>set cookie value</p> |
+| day | <code>Number</code> \| <code>Object</code> |  |
+
+**Example**  
+```js
+set('token', 'abc')
+//=> token=abc; path=/; domain=localhost
+```
 <a name="module_zaxCookie.set"></a>
 
 ### zaxCookie.set ⇒ <code>String</code>
@@ -39,10 +58,21 @@ get('token')
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>String</code> | <p>del cookie key</p> |
+| attributes | <code>Object</code> |  |
 
 **Example**  
 ```js
 del('token')
+```
+<a name="module_zaxCookie.del"></a>
+
+### zaxCookie.del
+<p>clear all cookie</p>
+
+**Kind**: static property of [<code>zaxCookie</code>](#module_zaxCookie)  
+**Example**  
+```js
+clear()
 ```
 <a name="module_zaxCookie..getDomain"></a>
 
@@ -55,22 +85,4 @@ del('token')
 ```js
 getDomain()
 //=> localhost
-```
-<a name="module_zaxCookie..set"></a>
-
-### zaxCookie~set(key, value, day) ⇒ <code>String</code>
-<p>set cookie</p>
-
-**Kind**: inner method of [<code>zaxCookie</code>](#module_zaxCookie)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| key | <code>String</code> | <p>set cookie key</p> |
-| value | <code>String</code> | <p>set cookie value</p> |
-| day | <code>Number</code> | <p>set cookie expires days</p> |
-
-**Example**  
-```js
-set('token', 'abc')
-//=> token=abc; path=/; domain=localhost
 ```

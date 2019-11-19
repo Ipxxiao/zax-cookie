@@ -4,11 +4,13 @@
  * @see doc https://github.com/Ipxxiao/zax-cookie/tree/master/docs
  */
 
-type DateType = Date | number | string
+import Cookie from 'js-cookie'
+
+type DateType = number | Date | undefined
 
 interface Attributes {
     path: string
-    domain: string | void
+    domain: string | undefined
     expires?: DateType
     secure?: any
     'max-age'?: any
@@ -29,7 +31,7 @@ const decode = (s: string): string => {
  *
  * @returns {String} domain
  */
-const getDomain = (): string | void => {
+const getDomain = (): string | undefined => {
     /* istanbul ignore next */
     if (typeof location !== 'undefined') {
         let hostname: string = location.hostname
@@ -64,54 +66,29 @@ const getDomain = (): string | void => {
  *
  * @param key {String} set cookie key
  * @param value {String} set cookie value
- * @param day {Number} set cookie expires days
+ * @param day {Number | Object}
+ * 
  * @returns {String}
  */
-const set = (key: string, value: string, day?: number): string | void => {
+const set = (key: string, value: string, attributes?: Attributes | number): string | void => {
     /* istanbul ignore next */
     if (typeof document !== 'undefined') {
-        let attributes: Attributes = {
+        let options: Attributes = {
             path: '/',
             domain: getDomain()
         }
 
-        if (typeof day === 'number') {
-            attributes.expires = new Date(Date.now() + day * 864e5).toUTCString()
+        if (!attributes) {
+            return Cookie.set(key, value, options)
+        } else if (typeof attributes === 'number') {
+            options.expires = attributes
+
+            return Cookie.set(key, value, options)
+        } else if (Object.prototype.toString.call(attributes) === '[object Object]') {
+            attributes = Object.assign({}, options, attributes)
+
+            return Cookie.set(key, value, attributes)
         }
-
-        value = encodeURIComponent(String(value)).replace(
-            /%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,
-            decodeURIComponent
-        )
-
-        /* istanbul ignore next */
-        key = encodeURIComponent(String(key))
-            .replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
-            .replace(/[()]/g, escape)
-
-        let stringifiedAttributes: string = ''
-        for (let attributeName in attributes) {
-            /* if (!attributes[attributeName]) {
-                continue
-            } */
-
-            stringifiedAttributes += '; ' + attributeName
-
-            /* if (attributes[attributeName] === true) {
-                continue
-            } */
-
-            // Considers RFC 6265 section 5.2:
-            // ...
-            // 3.  If the remaining unparsed-attributes contains a %x3B (";")
-            //     character:
-            // Consume the characters of the unparsed-attributes up to,
-            // not including, the first %x3B (";") character.
-            // ...
-            stringifiedAttributes += '=' + attributes[attributeName].split(';')[0]
-        }
-
-        return (document.cookie = key + '=' + value + stringifiedAttributes)
     }
 }
 
@@ -125,37 +102,13 @@ const set = (key: string, value: string, day?: number): string | void => {
  * ```
  *
  * @param key {String} get cookie key
+ * 
  * @returns {String}
  */
 const get = (key: string): string | void => {
-    if (typeof document !== 'undefined' && typeof key === 'string' && key) {
-        // To prevent the for loop in the first place assign an empty array
-        // in case there are no cookies at all.
-        let cookies: string[] = document.cookie ? document.cookie.split('; ') : []
-        let jar: any = {}
-
-        for (let i = 0; i < cookies.length; i++) {
-            let parts: string[] = cookies[i].split('=')
-            let cookie: string = parts.slice(1).join('=')
-
-            if (cookie.charAt(0) === '"') {
-                cookie = cookie.slice(1, -1)
-            }
-
-            /* istanbul ignore next */
-            if (parts[0]) {
-                let name: string = decode(parts[0])
-                jar[name] = decode(cookie)
-
-                /* istanbul ignore next */
-                if (key === name) {
-                    break
-                }
-            }
-        }
-
-        /* istanbul ignore next */
-        return key ? jar[key] : jar
+    /* istanbul ignore next */
+    if (typeof document !== 'undefined') {
+        return Cookie.get(key)
     }
 }
 
@@ -168,9 +121,10 @@ const get = (key: string): string | void => {
  * ```
  * 
  * @param key {String} del cookie key
+ * @param attributes {Object}
  */
-const del = (key: string) => {
-    get(key) && set(key, '', -1)
+const del = (key: string, attributes?: Attributes) => {
+    Cookie.remove(key, attributes)
 }
 
 /**

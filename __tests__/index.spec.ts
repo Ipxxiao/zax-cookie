@@ -1,29 +1,82 @@
-import { set, get, del } from '../src/index'
+import { getDomain, set, get, del, clear } from '../src/index'
 import zaxCookie from '../src/index'
 
 import { log } from '../src/_utils/index'
 
-const methods = ['set', 'get', 'del']
+const methods = ['getDomain', 'set', 'get', 'del', 'clear']
+
+Object.defineProperty(window, 'location', {
+	writable: true,
+	value: {
+		hostname: '',
+	}
+})
+Object.defineProperty(window.document, 'cookie', {
+	writable: true,
+	value: '',
+})
 
 describe('zaxCookie', () => {
-	// methods.forEach(par => {
-	// 	it(`should have ${par} method`, () => {
-	// 		expect(zaxCookie).toHaveProperty(par)
-	// 		expect(zaxCookie[par]).toBeInstanceOf(Function)
-	// 	})
-	// })
+	methods.forEach(par => {
+		it(`should have ${par} method`, () => {
+			expect(zaxCookie).toHaveProperty(par)
+			expect(zaxCookie[par]).toBeInstanceOf(Function)
+		})
+	})
 
-	// it(`set`, () => {
-	// 	expect(set('token', 'abc')).toEqual('token=abc; path=/; domain=localhost')
-	// })
+	it(`getDomain`, () => {
+		// expect(getDomain()).toEqual(undefined)
 
-	// it(`get`, () => {
-	// 	expect(get('token')).toEqual(undefined)
-	// })
+		window.location.hostname = 'localhost'
+		expect(getDomain()).toEqual('localhost')
 
-	// it(`del`, () => {
-	// 	expect(del('token')).toEqual(undefined)
-	// })
+		window.location.hostname = '192.168.32.98'
+		expect(getDomain()).toEqual('192.168.32.98')
+
+		window.location.hostname = 'zhongan.com'
+		expect(getDomain()).toEqual('zhongan.com')
+
+		window.location.hostname = 'm.zhongan.com'
+		expect(getDomain()).toEqual('zhongan.com')
+	})
+
+	it(`set`, () => {
+		window.location.hostname = 'zhongan.com'
+		expect(set('token', 'abc')).toEqual('token=abc; path=/; domain=zhongan.com')
+
+		expect(set('token', 'abc', 1)).toEqual('token=abc; path=/; domain=zhongan.com; expires=' + new Date(Date.now() + 1 * 864e5).toUTCString())
+	})
+
+	it(`get`, () => {
+		window.document.cookie = 'token=abc'
+		expect(get('token')).toEqual('abc')
+
+		window.document.cookie = 'channelId="94"'
+		expect(get('channelId')).toEqual('94')
+
+		window.document.cookie = ''
+		expect(get('')).toEqual({})
+	})
+
+	it(`del`, () => {
+		expect(del('token')).toEqual(undefined)
+
+		expect(del('')).toEqual(undefined)
+	})
+
+	it(`clear`, () => {
+		window.document.cookie = 'token=abc'
+		expect(clear()).toEqual(undefined)
+
+		window.document.cookie = 'token='
+		expect(clear()).toEqual(undefined)
+
+		window.document.cookie = '='
+		expect(clear()).toEqual(undefined)
+
+		window.document.cookie = ''
+		expect(clear()).toEqual(undefined)
+	})
 })
 
 describe('log', () => {
