@@ -48,7 +48,7 @@ zaxCookie.set('token', 'abc')
 zaxCookie.set('token', 'abc', 1)
 zaxCookie.set('token', 'abc', {
     path: '/',
-    domain: 'zhongan.com'
+    domain: 'demo.com'
     expires: new Date(Date.now() + 1 * 864e5).toUTCString()
 })
 ```
@@ -56,7 +56,7 @@ zaxCookie.set('token', 'abc', {
 ``` javascript
 token=abc; path=/; domain=localhost
 token=abc; path=/; domain=localhost; expires=Wed, 20 Nov 2019 09:18:38 GMT
-token=abc; path=/; domain=zhongan.com; expires=Wed, 20 Nov 2019 09:18:38 GMT
+token=abc; path=/; domain=demo.com; expires=Wed, 20 Nov 2019 09:18:38 GMT
 ```
 
 . **get**
@@ -73,7 +73,7 @@ abc
 zaxCookie.del('token')
 zaxCookie.del('token', {
     path: '/',
-    domain: 'zhongan.com'
+    domain: 'demo.com'
 })
 ```
 

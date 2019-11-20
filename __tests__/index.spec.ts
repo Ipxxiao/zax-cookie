@@ -25,23 +25,21 @@ describe('zaxCookie', () => {
 	})
 
 	it(`getDomain`, () => {
-		// expect(getDomain()).toEqual(undefined)
-
 		window.location.hostname = 'localhost'
 		expect(getDomain()).toEqual('localhost')
 
-		// window.location.hostname = '192.168.32.98'
-		// expect(getDomain()).toEqual('192.168.32.98')
+		window.location.hostname = '192.168.32.98'
+		expect(getDomain()).toEqual('192.168.32.98')
 
-		// window.location.hostname = 'zhongan.com'
-		// expect(getDomain()).toEqual('zhongan.com')
+		window.location.hostname = 'demo.com'
+		expect(getDomain()).toEqual('demo.com')
 
-		// window.location.hostname = 'm.zhongan.com'
-		// expect(getDomain()).toEqual('zhongan.com')
+		window.location.hostname = 'm.demo.com'
+		expect(getDomain()).toEqual('demo.com')
 	})
 
 	it(`set`, () => {
-		// window.location.hostname = 'zhongan.com'
+		window.location.hostname = 'localhost'
 		expect(set('token', 'abc')).toEqual('token=abc; path=/; domain=localhost')
 
 		expect(set('token', 'abc', 1)).toEqual('token=abc; path=/; domain=localhost; expires=' + new Date(Date.now() + 1 * 864e5).toUTCString())
