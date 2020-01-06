@@ -1,6 +1,6 @@
 {
     "name": "zax-cookie",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "js cookie",
     "main": "./libs/cjs",
     "browser": "./libs/es",
