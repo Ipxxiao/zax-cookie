@@ -2,7 +2,8 @@
     "name": "zax-cookie",
     "version": "0.0.5",
     "description": "js cookie",
-    "main": "./libs/cjs",
+	"main": "./libs/cjs",
+	"browser": "./libs/es",
     "directories": {
         "test": "test",
         "lib": "libs",
