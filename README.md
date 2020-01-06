@@ -22,7 +22,7 @@ npm i zax-cookie -S
 ## build with rollup
 
 ``` base
-npm run build
+npm run build 
 ```
 
 ## use
