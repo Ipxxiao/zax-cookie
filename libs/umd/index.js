@@ -1,7 +1,5 @@
 /**
  * Cookie module.
- * @module zaxCookie
- * @see doc https://github.com/Ipxxiao/zax-cookie/tree/master/docs
  */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -30,7 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
      * //=> localhost
      * ```
      *
-     * @returns {String} domain
+     * @returns {String}
      */
     var getDomain = function () {
         /* istanbul ignore next */
@@ -65,7 +63,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
      *
      * @param key {String} set cookie key
      * @param value {String} set cookie value
-     * @param day {Number | Object}
+     * @param attributes {Number | Object} set days or attributes
      *
      * @returns {String}
      */

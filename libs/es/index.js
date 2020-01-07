@@ -1,7 +1,5 @@
 /**
  * Cookie module.
- * @module zaxCookie
- * @see doc https://github.com/Ipxxiao/zax-cookie/tree/master/docs
  */
 import Cookie from 'js-cookie';
 const decode = (s) => {
@@ -16,7 +14,7 @@ const decode = (s) => {
  * //=> localhost
  * ```
  *
- * @returns {String} domain
+ * @returns {String}
  */
 const getDomain = () => {
     /* istanbul ignore next */
@@ -50,7 +48,7 @@ const getDomain = () => {
  *
  * @param key {String} set cookie key
  * @param value {String} set cookie value
- * @param day {Number | Object}
+ * @param attributes {Number | Object} set days or attributes
  *
  * @returns {String}
  */

@@ -1,8 +1,6 @@
 "use strict";
 /**
  * Cookie module.
- * @module zaxCookie
- * @see doc https://github.com/Ipxxiao/zax-cookie/tree/master/docs
  */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -21,7 +19,7 @@ var decode = function (s) {
  * //=> localhost
  * ```
  *
- * @returns {String} domain
+ * @returns {String}
  */
 var getDomain = function () {
     /* istanbul ignore next */
@@ -56,7 +54,7 @@ exports.getDomain = getDomain;
  *
  * @param key {String} set cookie key
  * @param value {String} set cookie value
- * @param day {Number | Object}
+ * @param attributes {Number | Object} set days or attributes
  *
  * @returns {String}
  */

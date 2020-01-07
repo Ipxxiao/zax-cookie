@@ -1,7 +1,5 @@
 /**
  * Cookie module.
- * @module zaxCookie
- * @see doc https://github.com/Ipxxiao/zax-cookie/tree/master/docs
  */
 declare type DateType = number | Date | undefined;
 interface Attributes {
@@ -20,7 +18,7 @@ interface Attributes {
  * //=> localhost
  * ```
  *
- * @returns {String} domain
+ * @returns {String}
  */
 declare const getDomain: () => string | undefined;
 /**
@@ -34,7 +32,7 @@ declare const getDomain: () => string | undefined;
  *
  * @param key {String} set cookie key
  * @param value {String} set cookie value
- * @param day {Number | Object}
+ * @param attributes {Number | Object} set days or attributes
  *
  * @returns {String}
  */
