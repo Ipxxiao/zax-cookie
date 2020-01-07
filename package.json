@@ -4,6 +4,7 @@
 	"description": "js cookie",
 	"main": "./libs/cjs",
 	"browser": "./libs/es",
+	"module": "./libs/es",
 	"sideEffects": false,
 	"directories": {
 		"test": "test",
