@@ -60,7 +60,7 @@ const getDomain = (): string | undefined => {
  *
  * @example
  * ```js
- * set('token', 'abc')
+ * setCookie('token', 'abc')
  * //=> token=abc; path=/; domain=localhost
  * ```
  *
@@ -70,7 +70,7 @@ const getDomain = (): string | undefined => {
  * 
  * @returns {String}
  */
-const set = (key: string, value: string, attributes?: Attributes | number): string | void => {
+const setCookie = (key: string, value: string, attributes?: Attributes | number): string | void => {
     /* istanbul ignore next */
     if (typeof document !== 'undefined') {
         let options: Attributes = {
@@ -97,7 +97,7 @@ const set = (key: string, value: string, attributes?: Attributes | number): stri
  *
  * @example
  * ```js
- * get('token')
+ * getCookie('token')
  * //=> abc
  * ```
  *
@@ -105,7 +105,7 @@ const set = (key: string, value: string, attributes?: Attributes | number): stri
  * 
  * @returns {String}
  */
-const get = (key: string): string | void => {
+const getCookie = (key: string): string | void => {
     /* istanbul ignore next */
     if (typeof document !== 'undefined') {
         return Cookie.get(key)
@@ -117,13 +117,13 @@ const get = (key: string): string | void => {
  *
  * @example
  * ```js
- * del('token')
+ * delCookie('token')
  * ```
  * 
  * @param key {String} del cookie key
  * @param attributes {Object}
  */
-const del = (key: string, attributes?: Attributes) => {
+const delCookie = (key: string, attributes?: Attributes) => {
     Cookie.remove(key, attributes)
 }
 
@@ -132,10 +132,10 @@ const del = (key: string, attributes?: Attributes) => {
  *
  * @example
  * ```js
- * clear()
+ * clearCookie()
  * ```
  */
-const clear = () => {
+const clearCookie = () => {
     /* istanbul ignore next */
     if (typeof document !== 'undefined') {
         // To prevent the for loop in the first place assign an empty array
@@ -148,7 +148,7 @@ const clear = () => {
             if (parts[0]) {
                 let key: string = decode(parts[0])
 
-                del(key)
+                delCookie(key)
             }
         }
     }
@@ -156,16 +156,16 @@ const clear = () => {
 
 export {
     getDomain,
-    set,
-    get,
-    del,
-    clear,
+    setCookie,
+    getCookie,
+    delCookie,
+    clearCookie,
 }
 
 export default {
     getDomain,
-    set,
-    get,
-    del,
-    clear,
+    set: setCookie,
+    get: getCookie,
+    del: delCookie,
+    clear: clearCookie,
 }

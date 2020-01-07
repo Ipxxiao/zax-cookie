@@ -1,5 +1,4 @@
-import { getDomain, set, get, del, clear } from '../src/index'
-import zaxCookie from '../src/index'
+import zaxCookie, { getDomain, setCookie, getCookie, delCookie, clearCookie } from '../src/index'
 
 import { log } from '../src/_utils/index'
 
@@ -40,42 +39,42 @@ describe('zaxCookie', () => {
 		*/
 	})
 
-	it(`set`, () => {
+	it(`setCookie`, () => {
 		window.location.hostname = 'localhost'
-		expect(set('token', 'abc')).toEqual('token=abc; path=/; domain=localhost')
+		expect(setCookie('token', 'abc')).toEqual('token=abc; path=/; domain=localhost')
 
-		expect(set('token', 'abc', 1)).toEqual('token=abc; path=/; domain=localhost; expires=' + new Date(Date.now() + 1 * 864e5).toUTCString())
+		expect(setCookie('token', 'abc', 1)).toEqual('token=abc; path=/; domain=localhost; expires=' + new Date(Date.now() + 1 * 864e5).toUTCString())
 	})
 
-	it(`get`, () => {
+	it(`getCookie`, () => {
 		window.document.cookie = 'token=abc'
-		expect(get('token')).toEqual('abc')
+		expect(getCookie('token')).toEqual('abc')
 
 		window.document.cookie = 'channelId="94"'
-		expect(get('channelId')).toEqual('94')
+		expect(getCookie('channelId')).toEqual('94')
 
 		window.document.cookie = ''
-		expect(get('')).toEqual({})
+		expect(getCookie('')).toEqual({})
 	})
 
-	it(`del`, () => {
-		expect(del('token')).toEqual(undefined)
+	it(`delCookie`, () => {
+		expect(delCookie('token')).toEqual(undefined)
 
-		expect(del('')).toEqual(undefined)
+		expect(delCookie('')).toEqual(undefined)
 	})
 
-	it(`clear`, () => {
+	it(`clearCookie`, () => {
 		window.document.cookie = 'token=abc'
-		expect(clear()).toEqual(undefined)
+		expect(clearCookie()).toEqual(undefined)
 
 		window.document.cookie = 'token='
-		expect(clear()).toEqual(undefined)
+		expect(clearCookie()).toEqual(undefined)
 
 		window.document.cookie = '='
-		expect(clear()).toEqual(undefined)
+		expect(clearCookie()).toEqual(undefined)
 
 		window.document.cookie = ''
-		expect(clear()).toEqual(undefined)
+		expect(clearCookie()).toEqual(undefined)
 	})
 })
 

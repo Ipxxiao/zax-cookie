@@ -28,7 +28,7 @@ declare const getDomain: () => string | undefined;
  *
  * @example
  * ```js
- * set('token', 'abc')
+ * setCookie('token', 'abc')
  * //=> token=abc; path=/; domain=localhost
  * ```
  *
@@ -38,13 +38,13 @@ declare const getDomain: () => string | undefined;
  *
  * @returns {String}
  */
-declare const set: (key: string, value: string, attributes?: number | Attributes | undefined) => string | void;
+declare const setCookie: (key: string, value: string, attributes?: number | Attributes | undefined) => string | void;
 /**
  * get cookie
  *
  * @example
  * ```js
- * get('token')
+ * getCookie('token')
  * //=> abc
  * ```
  *
@@ -52,29 +52,29 @@ declare const set: (key: string, value: string, attributes?: number | Attributes
  *
  * @returns {String}
  */
-declare const get: (key: string) => string | void;
+declare const getCookie: (key: string) => string | void;
 /**
  * del cookie
  *
  * @example
  * ```js
- * del('token')
+ * delCookie('token')
  * ```
  *
  * @param key {String} del cookie key
  * @param attributes {Object}
  */
-declare const del: (key: string, attributes?: Attributes | undefined) => void;
+declare const delCookie: (key: string, attributes?: Attributes | undefined) => void;
 /**
  * clear all cookie
  *
  * @example
  * ```js
- * clear()
+ * clearCookie()
  * ```
  */
-declare const clear: () => void;
-export { getDomain, set, get, del, clear, };
+declare const clearCookie: () => void;
+export { getDomain, setCookie, getCookie, delCookie, clearCookie, };
 declare const _default: {
     getDomain: () => string | undefined;
     set: (key: string, value: string, attributes?: number | Attributes | undefined) => string | void;

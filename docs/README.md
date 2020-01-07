@@ -8,9 +8,9 @@
 * [zaxCookie](#module_zaxCookie)
     * _static_
         * [.getDomain](#module_zaxCookie.getDomain) ⇒ <code>String</code>
-        * [.set](#module_zaxCookie.set) ⇒ <code>String</code>
-        * [.get](#module_zaxCookie.get)
-        * [.del](#module_zaxCookie.del)
+        * [.setCookie](#module_zaxCookie.setCookie) ⇒ <code>String</code>
+        * [.getCookie](#module_zaxCookie.getCookie)
+        * [.delCookie](#module_zaxCookie.delCookie)
     * _inner_
         * [~getDomain()](#module_zaxCookie..getDomain) ⇒ <code>String</code>
 
@@ -29,12 +29,12 @@
 
 **Example**  
 ```js
-set('token', 'abc')
+setCookie('token', 'abc')
 //=> token=abc; path=/; domain=localhost
 ```
-<a name="module_zaxCookie.set"></a>
+<a name="module_zaxCookie.setCookie"></a>
 
-### zaxCookie.set ⇒ <code>String</code>
+### zaxCookie.setCookie ⇒ <code>String</code>
 <p>get cookie</p>
 
 **Kind**: static property of [<code>zaxCookie</code>](#module_zaxCookie)  
@@ -45,12 +45,12 @@ set('token', 'abc')
 
 **Example**  
 ```js
-get('token')
+getCookie('token')
 //=> abc
 ```
-<a name="module_zaxCookie.get"></a>
+<a name="module_zaxCookie.getCookie"></a>
 
-### zaxCookie.get
+### zaxCookie.getCookie
 <p>del cookie</p>
 
 **Kind**: static property of [<code>zaxCookie</code>](#module_zaxCookie)  
@@ -62,17 +62,17 @@ get('token')
 
 **Example**  
 ```js
-del('token')
+delCookie('token')
 ```
-<a name="module_zaxCookie.del"></a>
+<a name="module_zaxCookie.delCookie"></a>
 
-### zaxCookie.del
+### zaxCookie.delCookie
 <p>clear all cookie</p>
 
 **Kind**: static property of [<code>zaxCookie</code>](#module_zaxCookie)  
 **Example**  
 ```js
-clear()
+clearCookie()
 ```
 <a name="module_zaxCookie..getDomain"></a>
 

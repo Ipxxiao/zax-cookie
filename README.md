@@ -28,14 +28,13 @@ npm run build
 ## use
 
 ``` javascript
-import { getDomain, set, get, del, clear } from 'zax-cookie'
-import zaxCookie from 'zax-cookie'
+import zaxCookie, { getDomain, setCookie, getCookie, delCookie, clearCookie } from 'zax-cookie'
 ```
 
 
 . **getDomain**
 ``` javascript
-zaxCookie.getDomain()
+zaxCookie.getDomain() //=> getDomain()
 ```
 
 ``` javascript
@@ -44,7 +43,7 @@ localhost
 
 . **set**
 ``` javascript
-zaxCookie.set('token', 'abc')
+zaxCookie.set('token', 'abc') //=> setCookie('token', 'abc')
 zaxCookie.set('token', 'abc', 1)
 zaxCookie.set('token', 'abc', {
     path: '/',
@@ -61,7 +60,7 @@ token=abc; path=/; domain=demo.com; expires=Wed, 20 Nov 2019 09:18:38 GMT
 
 . **get**
 ``` javascript
-zaxCookie.get('token')
+zaxCookie.get('token') //=> getCookie('token')
 ```
 
 ``` javascript
@@ -70,7 +69,7 @@ abc
 
 . **del**
 ``` javascript
-zaxCookie.del('token')
+zaxCookie.del('token') //=> delCookie('token')
 zaxCookie.del('token', {
     path: '/',
     domain: 'demo.com'
@@ -79,7 +78,7 @@ zaxCookie.del('token', {
 
 . **clear**
 ``` javascript
-zaxCookie.clear()
+zaxCookie.clear() //=> clearCookie()
 ```
 
 ## More
