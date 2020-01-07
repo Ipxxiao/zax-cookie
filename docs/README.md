@@ -1,43 +1,49 @@
-<a name="module_zaxCookie"></a>
+## Members
 
-## zaxCookie
-<p>Cookie module.</p>
+<dl>
+<dt><a href="#getDomain">getDomain</a> ⇒ <code>String</code></dt>
+<dd><p>set cookie</p></dd>
+<dt><a href="#setCookie">setCookie</a> ⇒ <code>String</code></dt>
+<dd><p>get cookie</p></dd>
+<dt><a href="#getCookie">getCookie</a></dt>
+<dd><p>del cookie</p></dd>
+<dt><a href="#delCookie">delCookie</a></dt>
+<dd><p>clear all cookie</p></dd>
+</dl>
 
-**See**: doc https://github.com/Ipxxiao/zax-cookie/tree/master/docs  
+## Functions
 
-* [zaxCookie](#module_zaxCookie)
-    * _static_
-        * [.getDomain](#module_zaxCookie.getDomain) ⇒ <code>String</code>
-        * [.set](#module_zaxCookie.set) ⇒ <code>String</code>
-        * [.get](#module_zaxCookie.get)
-        * [.del](#module_zaxCookie.del)
-    * _inner_
-        * [~getDomain()](#module_zaxCookie..getDomain) ⇒ <code>String</code>
+<dl>
+<dt><a href="#decode">decode()</a></dt>
+<dd><p>Cookie module.</p></dd>
+<dt><a href="#getDomain">getDomain()</a> ⇒ <code>String</code></dt>
+<dd><p>get domain</p></dd>
+</dl>
 
-<a name="module_zaxCookie.getDomain"></a>
+<a name="getDomain"></a>
 
-### zaxCookie.getDomain ⇒ <code>String</code>
+## getDomain ⇒ <code>String</code>
 <p>set cookie</p>
 
-**Kind**: static property of [<code>zaxCookie</code>](#module_zaxCookie)  
+**Kind**: global variable  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>String</code> | <p>set cookie key</p> |
 | value | <code>String</code> | <p>set cookie value</p> |
-| day | <code>Number</code> \| <code>Object</code> |  |
+| attributes | <code>Number</code> \| <code>Object</code> | <p>set days or attributes</p> |
 
 **Example**  
 ```js
-set('token', 'abc')
+setCookie('token', 'abc')
 //=> token=abc; path=/; domain=localhost
 ```
-<a name="module_zaxCookie.set"></a>
+<a name="setCookie"></a>
 
-### zaxCookie.set ⇒ <code>String</code>
+## setCookie ⇒ <code>String</code>
 <p>get cookie</p>
 
-**Kind**: static property of [<code>zaxCookie</code>](#module_zaxCookie)  
+**Kind**: global variable  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -45,15 +51,15 @@ set('token', 'abc')
 
 **Example**  
 ```js
-get('token')
+getCookie('token')
 //=> abc
 ```
-<a name="module_zaxCookie.get"></a>
+<a name="getCookie"></a>
 
-### zaxCookie.get
+## getCookie
 <p>del cookie</p>
 
-**Kind**: static property of [<code>zaxCookie</code>](#module_zaxCookie)  
+**Kind**: global variable  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -62,25 +68,30 @@ get('token')
 
 **Example**  
 ```js
-del('token')
+delCookie('token')
 ```
-<a name="module_zaxCookie.del"></a>
+<a name="delCookie"></a>
 
-### zaxCookie.del
+## delCookie
 <p>clear all cookie</p>
 
-**Kind**: static property of [<code>zaxCookie</code>](#module_zaxCookie)  
+**Kind**: global variable  
 **Example**  
 ```js
-clear()
+clearCookie()
 ```
-<a name="module_zaxCookie..getDomain"></a>
+<a name="decode"></a>
 
-### zaxCookie~getDomain() ⇒ <code>String</code>
+## decode()
+<p>Cookie module.</p>
+
+**Kind**: global function  
+<a name="getDomain"></a>
+
+## getDomain() ⇒ <code>String</code>
 <p>get domain</p>
 
-**Kind**: inner method of [<code>zaxCookie</code>](#module_zaxCookie)  
-**Returns**: <code>String</code> - <p>domain</p>  
+**Kind**: global function  
 **Example**  
 ```js
 getDomain()

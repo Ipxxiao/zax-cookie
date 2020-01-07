@@ -1,8 +1,6 @@
 "use strict";
 /**
  * Cookie module.
- * @module zaxCookie
- * @see doc https://github.com/Ipxxiao/zax-cookie/tree/master/docs
  */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -21,7 +19,7 @@ var decode = function (s) {
  * //=> localhost
  * ```
  *
- * @returns {String} domain
+ * @returns {String}
  */
 var getDomain = function () {
     /* istanbul ignore next */
@@ -50,17 +48,17 @@ exports.getDomain = getDomain;
  *
  * @example
  * ```js
- * set('token', 'abc')
+ * setCookie('token', 'abc')
  * //=> token=abc; path=/; domain=localhost
  * ```
  *
  * @param key {String} set cookie key
  * @param value {String} set cookie value
- * @param day {Number | Object}
+ * @param attributes {Number | Object} set days or attributes
  *
  * @returns {String}
  */
-var set = function (key, value, attributes) {
+var setCookie = function (key, value, attributes) {
     /* istanbul ignore next */
     if (typeof document !== 'undefined') {
         var options = {
@@ -80,13 +78,13 @@ var set = function (key, value, attributes) {
         }
     }
 };
-exports.set = set;
+exports.setCookie = setCookie;
 /**
  * get cookie
  *
  * @example
  * ```js
- * get('token')
+ * getCookie('token')
  * //=> abc
  * ```
  *
@@ -94,37 +92,37 @@ exports.set = set;
  *
  * @returns {String}
  */
-var get = function (key) {
+var getCookie = function (key) {
     /* istanbul ignore next */
     if (typeof document !== 'undefined') {
         return js_cookie_1.default.get(key);
     }
 };
-exports.get = get;
+exports.getCookie = getCookie;
 /**
  * del cookie
  *
  * @example
  * ```js
- * del('token')
+ * delCookie('token')
  * ```
  *
  * @param key {String} del cookie key
  * @param attributes {Object}
  */
-var del = function (key, attributes) {
+var delCookie = function (key, attributes) {
     js_cookie_1.default.remove(key, attributes);
 };
-exports.del = del;
+exports.delCookie = delCookie;
 /**
  * clear all cookie
  *
  * @example
  * ```js
- * clear()
+ * clearCookie()
  * ```
  */
-var clear = function () {
+var clearCookie = function () {
     /* istanbul ignore next */
     if (typeof document !== 'undefined') {
         // To prevent the for loop in the first place assign an empty array
@@ -134,17 +132,17 @@ var clear = function () {
             var parts = cookies[i].split('=');
             if (parts[0]) {
                 var key = decode(parts[0]);
-                del(key);
+                delCookie(key);
             }
         }
     }
 };
-exports.clear = clear;
+exports.clearCookie = clearCookie;
 exports.default = {
     getDomain: getDomain,
-    set: set,
-    get: get,
-    del: del,
-    clear: clear,
+    set: setCookie,
+    get: getCookie,
+    del: delCookie,
+    clear: clearCookie,
 };
 //# sourceMappingURL=index.js.map

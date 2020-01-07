@@ -1,7 +1,5 @@
 /**
  * Cookie module.
- * @module zaxCookie
- * @see doc https://github.com/Ipxxiao/zax-cookie/tree/master/docs
  */
 import Cookie from 'js-cookie';
 const decode = (s) => {
@@ -16,7 +14,7 @@ const decode = (s) => {
  * //=> localhost
  * ```
  *
- * @returns {String} domain
+ * @returns {String}
  */
 const getDomain = () => {
     /* istanbul ignore next */
@@ -44,17 +42,17 @@ const getDomain = () => {
  *
  * @example
  * ```js
- * set('token', 'abc')
+ * setCookie('token', 'abc')
  * //=> token=abc; path=/; domain=localhost
  * ```
  *
  * @param key {String} set cookie key
  * @param value {String} set cookie value
- * @param day {Number | Object}
+ * @param attributes {Number | Object} set days or attributes
  *
  * @returns {String}
  */
-const set = (key, value, attributes) => {
+const setCookie = (key, value, attributes) => {
     /* istanbul ignore next */
     if (typeof document !== 'undefined') {
         let options = {
@@ -79,7 +77,7 @@ const set = (key, value, attributes) => {
  *
  * @example
  * ```js
- * get('token')
+ * getCookie('token')
  * //=> abc
  * ```
  *
@@ -87,7 +85,7 @@ const set = (key, value, attributes) => {
  *
  * @returns {String}
  */
-const get = (key) => {
+const getCookie = (key) => {
     /* istanbul ignore next */
     if (typeof document !== 'undefined') {
         return Cookie.get(key);
@@ -98,13 +96,13 @@ const get = (key) => {
  *
  * @example
  * ```js
- * del('token')
+ * delCookie('token')
  * ```
  *
  * @param key {String} del cookie key
  * @param attributes {Object}
  */
-const del = (key, attributes) => {
+const delCookie = (key, attributes) => {
     Cookie.remove(key, attributes);
 };
 /**
@@ -112,10 +110,10 @@ const del = (key, attributes) => {
  *
  * @example
  * ```js
- * clear()
+ * clearCookie()
  * ```
  */
-const clear = () => {
+const clearCookie = () => {
     /* istanbul ignore next */
     if (typeof document !== 'undefined') {
         // To prevent the for loop in the first place assign an empty array
@@ -125,17 +123,17 @@ const clear = () => {
             let parts = cookies[i].split('=');
             if (parts[0]) {
                 let key = decode(parts[0]);
-                del(key);
+                delCookie(key);
             }
         }
     }
 };
-export { getDomain, set, get, del, clear, };
+export { getDomain, setCookie, getCookie, delCookie, clearCookie, };
 export default {
     getDomain,
-    set,
-    get,
-    del,
-    clear,
+    set: setCookie,
+    get: getCookie,
+    del: delCookie,
+    clear: clearCookie,
 };
 //# sourceMappingURL=index.js.map
