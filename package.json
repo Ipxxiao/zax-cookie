@@ -3,7 +3,6 @@
 	"version": "1.0.2",
 	"description": "js cookie",
 	"main": "./libs/cjs",
-	"browser": "./libs/es",
 	"module": "./libs/es",
 	"sideEffects": false,
 	"directories": {
