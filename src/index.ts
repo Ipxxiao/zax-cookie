@@ -11,7 +11,8 @@ interface Attributes {
     domain: string | undefined
     expires?: DateType
     secure?: boolean
-    sameSite?: 'strict' | 'lax'
+    httpOnly?: boolean
+    sameSite?: 'strict' | 'lax' | 'none'
     'max-age'?: any
 }
 
