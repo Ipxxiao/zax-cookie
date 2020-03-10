@@ -44,6 +44,13 @@ describe('zaxCookie', () => {
 		expect(setCookie('token', 'abc')).toEqual('token=abc; path=/; domain=localhost')
 
 		expect(setCookie('token', 'abc', 1)).toEqual('token=abc; path=/; domain=localhost; expires=' + new Date(Date.now() + 1 * 864e5).toUTCString())
+
+		expect(setCookie('token', 'abc', {
+			path: '/',
+			domain: 'localhost',
+			expires: new Date(Date.now() + 1 * 864e5),
+			sameSite: 'lax'
+		})).toEqual('token=abc; path=/; domain=localhost; expires=' + new Date(Date.now() + 1 * 864e5).toUTCString() + '; sameSite=lax')
 	})
 
 	it(`getCookie`, () => {

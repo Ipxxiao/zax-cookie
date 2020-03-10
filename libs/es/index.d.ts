@@ -6,7 +6,8 @@ interface Attributes {
     path: string;
     domain: string | undefined;
     expires?: DateType;
-    secure?: any;
+    secure?: boolean;
+    sameSite?: 'strict' | 'lax';
     'max-age'?: any;
 }
 /**

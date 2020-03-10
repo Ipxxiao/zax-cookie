@@ -48,14 +48,15 @@ zaxCookie.set('token', 'abc', 1)
 zaxCookie.set('token', 'abc', {
     path: '/',
     domain: 'demo.com'
-    expires: new Date(Date.now() + 1 * 864e5).toUTCString()
+    expires: new Date(Date.now() + 1 * 864e5),
+    sameSite: 'lax'
 })
 ```
 
 ``` javascript
 token=abc; path=/; domain=localhost
 token=abc; path=/; domain=localhost; expires=Wed, 20 Nov 2019 09:18:38 GMT
-token=abc; path=/; domain=demo.com; expires=Wed, 20 Nov 2019 09:18:38 GMT
+token=abc; path=/; domain=demo.com; expires=Wed, 20 Nov 2019 09:18:38 GMT; sameSite=lax
 ```
 
 . **get**
