@@ -1,6 +1,6 @@
 {
-	"name": "zax-cookie",
-	"version": "1.0.6",
+	"name": "@zaxjs/cookie",
+	"version": "0.0.1",
 	"description": "js cookie",
 	"main": "./libs/cjs",
 	"sideEffects": false,
@@ -35,7 +35,7 @@
 		]
 	},
 	"keywords": [
-		"zax-cookie",
+		"@zaxjs/cookie",
 		"cookie",
 		"js cookie"
 	],
@@ -45,7 +45,7 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Ipxxiao/zax-cookie.git"
+		"url": "https://github.com/zaxjs/cookie.git"
 	},
 	"browserslist": [
 		"last 2 versions",
@@ -55,7 +55,7 @@
 		"iOS >= 9",
 		"Android >= 4.3"
 	],
-	"homepage": "https://github.com/Ipxxiao/zax-cookie",
+	"homepage": "https://github.com/zaxjs/cookie",
 	"author": "jonas",
 	"license": "MIT",
 	"private": false,
