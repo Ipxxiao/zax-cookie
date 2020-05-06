@@ -1,8 +1,8 @@
 # Zax Cookie
 
-[![NPM version](https://img.shields.io/npm/v/@zaxjs/cookie.svg?style=flat)](https://www.npmjs.com/package/@zaxjs/cookie)
-[![Build Status](https://travis-ci.org/Ipxxiao/@zaxjs/cookie.svg?branch=master)](https://travis-ci.org/Ipxxiao/@zaxjs/cookie)
-[![codecov](https://codecov.io/gh/Ipxxiao/@zaxjs/cookie/branch/master/graph/badge.svg)](https://codecov.io/gh/Ipxxiao/@zaxjs/cookie)
+[![NPM version](https://img.shields.io/npm/v/Ipxxiao/zax-cookie.svg?style=flat)](https://www.npmjs.com/package/Ipxxiao/zax-cookie)
+[![Build Status](https://travis-ci.org/Ipxxiao/Ipxxiao/zax-cookie.svg?branch=master)](https://travis-ci.org/Ipxxiao/Ipxxiao/zax-cookie)
+[![codecov](https://codecov.io/gh/Ipxxiao/Ipxxiao/zax-cookie/branch/master/graph/badge.svg)](https://codecov.io/gh/Ipxxiao/Ipxxiao/zax-cookie)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 Cookie module
@@ -16,19 +16,19 @@ Cookie module
 ## Install
 
 ``` base
-npm i @zaxjs/cookie -S
+npm i zax-cookie -S
 ```
 
 ## build with rollup
 
 ``` base
-npm run build 
+npm run build
 ```
 
 ## use
 
 ``` javascript
-import zaxCookie, { getDomain, setCookie, getCookie, delCookie, clearCookie } from '@zaxjs/cookie'
+import zaxCookie, { getDomain, setCookie, getCookie, delCookie, clearCookie } from 'zax-cookie'
 ```
 
 
@@ -83,5 +83,5 @@ zaxCookie.clear() //=> clearCookie()
 ```
 
 ## More
-- [Docs](https://github.com/Ipxxiao/@zaxjs/cookie/tree/master/docs)
-- [Test](https://github.com/Ipxxiao/@zaxjs/cookie/blob/master/__tests__/index.spec.ts)
+- [Docs](https://github.com/Ipxxiao/Ipxxiao/zax-cookie/tree/master/docs)
+- [Test](https://github.com/Ipxxiao/Ipxxiao/zax-cookie/blob/master/__tests__/index.spec.ts)
