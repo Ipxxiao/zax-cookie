@@ -2,7 +2,7 @@
  * Cookie module.
  */
 
-import Cookie from 'js-cookie'
+import Cookies from 'js-cookie'
 
 type DateType = number | Date | undefined
 
@@ -79,15 +79,15 @@ const setCookie = (key: string, value: string, attributes?: Attributes | number)
         }
 
         if (!attributes) {
-            return Cookie.set(key, value, options)
+            return Cookies.set(key, value, options)
         } else if (typeof attributes === 'number') {
             options.expires = attributes
 
-            return Cookie.set(key, value, options)
+            return Cookies.set(key, value, options)
         } else if (Object.prototype.toString.call(attributes) === '[object Object]') {
             attributes = Object.assign({}, options, attributes)
 
-            return Cookie.set(key, value, attributes)
+            return Cookies.set(key, value, attributes)
         }
     }
 }
@@ -108,7 +108,7 @@ const setCookie = (key: string, value: string, attributes?: Attributes | number)
 const getCookie = (key: string): string | void => {
     /* istanbul ignore next */
     if (typeof document !== 'undefined') {
-        return Cookie.get(key)
+        return Cookies.get(key)
     }
 }
 
@@ -124,7 +124,7 @@ const getCookie = (key: string): string | void => {
  * @param attributes {Object}
  */
 const delCookie = (key: string, attributes?: Attributes) => {
-    Cookie.remove(key, attributes)
+    Cookies.remove(key, attributes)
 }
 
 /**

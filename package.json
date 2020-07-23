@@ -69,16 +69,18 @@
 		"@babel/preset-env": "^7.6.3",
 		"@babel/preset-typescript": "^7.6.0",
 		"@types/jest": "^24.0.18",
+		"@types/js-cookie": "^2.2.4",
 		"@types/jsdom": "^12.2.4",
 		"@types/node": "^12.7.12",
 		"chalk": "^2.4.2",
-		"codecov": "^3.6.1",
+		"codecov": "3.7.1",
 		"done-rainbow": "^0.1.2",
 		"fs-extra": "^8.1.0",
 		"glob": "^7.1.4",
 		"jest": "^24.9.0",
 		"jsdoc-babel": "^0.5.0",
 		"jsdoc-to-markdown": "^5.0.2",
+		"jsdom": "^15.2.0",
 		"npm-run-all": "^4.1.5",
 		"rimraf": "^3.0.0",
 		"rollup": "^0.66.6",
@@ -90,9 +92,7 @@
 		"rollup-plugin-uglify": "^6.0.4",
 		"ts-jest": "^24.1.0",
 		"tslib": "^1.10.0",
-		"typescript": "^3.6.4",
-		"@types/js-cookie": "^2.2.4",
-		"jsdom": "^15.2.0"
+		"typescript": "^3.6.4"
 	},
 	"jest": {
 		"setupFiles": [
