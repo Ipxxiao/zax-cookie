@@ -1,8 +1,8 @@
 # Zax Cookie
 
-[![NPM version](https://img.shields.io/npm/v/Ipxxiao/zax-cookie.svg?style=flat)](https://www.npmjs.com/package/Ipxxiao/zax-cookie)
-[![Build Status](https://travis-ci.org/Ipxxiao/Ipxxiao/zax-cookie.svg?branch=master)](https://travis-ci.org/Ipxxiao/Ipxxiao/zax-cookie)
-[![codecov](https://codecov.io/gh/Ipxxiao/Ipxxiao/zax-cookie/branch/master/graph/badge.svg)](https://codecov.io/gh/Ipxxiao/Ipxxiao/zax-cookie)
+[![NPM version](https://img.shields.io/npm/v/zax-cookie.svg?style=flat)](https://www.npmjs.com/package/zax-cookie)
+[![Build Status](https://travis-ci.org/Ipxxiao/zax-cookie.svg?branch=master)](https://travis-ci.org/Ipxxiao/zax-cookie)
+[![codecov](https://codecov.io/gh/Ipxxiao/zax-cookie/branch/master/graph/badge.svg)](https://codecov.io/gh/Ipxxiao/zax-cookie)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 Cookie module
@@ -83,5 +83,5 @@ zaxCookie.clear() //=> clearCookie()
 ```
 
 ## More
-- [Docs](https://github.com/Ipxxiao/Ipxxiao/zax-cookie/tree/master/docs)
-- [Test](https://github.com/Ipxxiao/Ipxxiao/zax-cookie/blob/master/__tests__/index.spec.ts)
+- [Docs](https://github.com/Ipxxiao/zax-cookie/tree/master/docs)
+- [Test](https://github.com/Ipxxiao/zax-cookie/blob/master/__tests__/index.spec.ts)
