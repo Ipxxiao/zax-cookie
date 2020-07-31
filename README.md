@@ -76,7 +76,6 @@ zaxCookie.clear() //=> clearCookie()
 ```
 
 ## More
-- [Changelog](https://github.com/Ipxxiao/zax-cookie/blob/master/CHANGELOG.md)
 - [License](https://github.com/Ipxxiao/zax-cookie/blob/master/LICENSE)
 - [Docs](https://github.com/Ipxxiao/zax-cookie/tree/master/docs)
 - [Test](https://github.com/Ipxxiao/zax-cookie/blob/master/__tests__/index.spec.ts)
