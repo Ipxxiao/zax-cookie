@@ -1,9 +1,4 @@
-# Introduction
-
-[![NPM version](https://img.shields.io/npm/v/zax-cookie.svg?style=flat)](https://www.npmjs.com/package/zax-cookie)
-[![Build Status](https://travis-ci.org/Ipxxiao/zax-cookie.svg?branch=master)](https://travis-ci.org/Ipxxiao/zax-cookie)
-[![codecov](https://codecov.io/gh/Ipxxiao/zax-cookie/branch/master/graph/badge.svg)](https://codecov.io/gh/Ipxxiao/zax-cookie)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+# Zax-cookie &middot; [![NPM version](https://img.shields.io/npm/v/zax-cookie.svg?style=flat)](https://www.npmjs.com/package/zax-cookie) [![Build Status](https://travis-ci.org/Ipxxiao/zax-cookie.svg?branch=master)](https://travis-ci.org/Ipxxiao/zax-cookie) [![codecov](https://codecov.io/gh/Ipxxiao/zax-cookie/branch/master/graph/badge.svg)](https://codecov.io/gh/Ipxxiao/zax-cookie) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 Cookie module
 
@@ -17,12 +12,16 @@ Cookie module
 
 ``` base
 npm i zax-cookie -S
+or
+yarn add zax-cookie
 ```
 
 ## Usage
 
 ``` javascript
 import zaxCookie, { getDomain, setCookie, getCookie, delCookie, clearCookie } from 'zax-cookie'
+or
+const zaxCookie, { getDomain, setCookie, getCookie, delCookie, clearCookie } = require('zax-cookie')
 ```
 
 
@@ -77,5 +76,7 @@ zaxCookie.clear() //=> clearCookie()
 ```
 
 ## More
+- [Changelog](https://github.com/Ipxxiao/zax-cookie/blob/master/CHANGELOG.md)
+- [License](https://github.com/Ipxxiao/zax-cookie/blob/master/LICENSE)
 - [Docs](https://github.com/Ipxxiao/zax-cookie/tree/master/docs)
 - [Test](https://github.com/Ipxxiao/zax-cookie/blob/master/__tests__/index.spec.ts)
