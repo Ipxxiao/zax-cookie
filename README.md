@@ -1,4 +1,4 @@
-# Zax Cookie
+# Introduction
 
 [![NPM version](https://img.shields.io/npm/v/zax-cookie.svg?style=flat)](https://www.npmjs.com/package/zax-cookie)
 [![Build Status](https://travis-ci.org/Ipxxiao/zax-cookie.svg?branch=master)](https://travis-ci.org/Ipxxiao/zax-cookie)
@@ -19,13 +19,7 @@ Cookie module
 npm i zax-cookie -S
 ```
 
-## build with rollup
-
-``` base
-npm run build
-```
-
-## use
+## Usage
 
 ``` javascript
 import zaxCookie, { getDomain, setCookie, getCookie, delCookie, clearCookie } from 'zax-cookie'
