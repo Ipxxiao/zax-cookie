@@ -6,6 +6,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.clearCookie = exports.delCookie = exports.getCookie = exports.setCookie = exports.getDomain = void 0;
 var js_cookie_1 = __importDefault(require("js-cookie"));
 var decode = function (s) {
     return s.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent);
