@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import zaxCookie, { getDomain, setCookie, getCookie, delCookie, clearCookie } from '../src/index'
 
 import { log } from '../src/_utils/index'

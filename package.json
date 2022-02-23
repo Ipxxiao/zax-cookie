@@ -86,9 +86,6 @@
 		"typescript": "^3.6.4"
 	},
 	"jest": {
-		"setupFiles": [
-			"<rootDir>/__mocks__/index.ts"
-		],
 		"transform": {
 			".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
 		},
