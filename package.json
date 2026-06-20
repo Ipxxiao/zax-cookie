@@ -114,6 +114,6 @@
 		"collectCoverage": true
 	},
 	"dependencies": {
-		"js-cookie": "^2.2.1"
+		"js-cookie": "^3.0.7"
 	}
 }
